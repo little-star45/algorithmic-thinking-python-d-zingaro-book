@@ -1,6 +1,6 @@
 # Algorithmic Thinking Python
 
-This repository contains ***my *** ***own*** Python translations of the example code from *Algorithmic Thinking* by Daniel Zingaro 1E (Polish translate edition). The goal is to provide clear, runnable Python versions of the algorithms presented in the book, useful for learning and experimentation.
+This repository contains ***my*** ***own*** Python translations of the example code from *Algorithmic Thinking* by Daniel Zingaro 1E (Polish translate edition). The goal is to provide clear, runnable Python versions of the algorithms presented in the book, useful for learning and experimentation.
 
 ## Contents
 
