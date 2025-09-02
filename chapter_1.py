@@ -113,6 +113,68 @@ def compare_1_9(first, second):
             return -1
     return 1
 
+def code(snowflake: list[int]) -> int:
+    summary = 0
+    for i in range(6):
+        summary+=snowflake[i]
+    return summary
+
+def code_1_10(snowflake: list[int]) -> int:
+    SIZE = 100000
+    return (snowflake[0] + snowflake[1] + snowflake[2] + snowflake[3] + snowflake[4] + snowflake[5])%SIZE
+
+def main_1_8() -> None:
+    N = 4
+    snowflakes = [[3,4,5,6,1,2],[2,3,4,5,6,7],[4,5,6,7,8,9],[1,2,3,4,5,6]]
+    identify_identical_1_1(snowflakes, N)
+
+def main_1_11() -> None:
+    pass
+
+class SnowflakeNode:
+    def __init__(self, value=None):
+        if value is None:
+            self.value = [-1]*6
+        else:
+            self.value = value
+        self.next = None
+
+def main_1_11_custom() -> None:
+    SIZE = 100000
+    N = 4
+    snowflakes = [[3,4,5,6,1,2],[2,3,4,5,6,7],[4,5,6,7,8,9],[1,2,3,4,5,6]]
+    # main_list = [SnowflakeNode()]*SIZE - WRONG! 
+    # This does not create separate SnowflakeNode objects, 
+    # but rather a list in which all elements point to the same object. 
+    main_list = [SnowflakeNode() for _ in range(SIZE)]
+    for i in range(N):
+        code = code_1_10(snowflakes[i])
+        node = main_list[code]
+        if node.value[0] == -1:
+            node.value = snowflakes[i]
+        else:
+            while node.next:
+                node = node.next
+            node.next = SnowflakeNode(snowflakes[i])
+    
+    for j in range(SIZE):
+        if main_list[j].next:
+            node = main_list[j]
+            while node.next:
+                if are_identical_1_6(node.value, node.next.value)==1:
+                    print("We found identical snowflakes.")
+                    return 1
+                node = node.next
+    print("No identical snowflakes.")
+    return 0
+
+def main_1_11() -> None:
+    pass
+
+    # print(main_list)
+
+
+
 def main() -> None:
     # values = (1,2,3,1,5)
     # n = 5
@@ -133,4 +195,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    main_1_11_custom()
